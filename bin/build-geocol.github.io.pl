@@ -74,7 +74,7 @@ all:
 updatenightly:
 });
 
-my $remote_url = 'git://github.com/geocol/geocol.github.io';
+my $remote_url = 'git@github.com:geocol/geocol.github.io';
 my $remote_branch = 'master';
 
 (system "cd \Q$dest_path\E &&
