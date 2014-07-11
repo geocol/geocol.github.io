@@ -72,6 +72,8 @@ my $makefile_path = $dest_path->child ('Makefile');
 $makefile_path->spew_utf8 (qq{
 all:
 updatenightly:
+\tgit checkout -b builder origin/builder
+\t\$(MAKE) updatenightly
 });
 
 my $remote_url = 'git@github.com:geocol/geocol.github.io';
