@@ -71,6 +71,7 @@ $index_path->spew_utf8 (qq{
 my $makefile_path = $dest_path->child ('Makefile');
 $makefile_path->spew_utf8 (qq{
 all:
+deps:
 updatenightly:
 \t(git checkout -b builder origin/builder || git checkout builder)
 \t\$(MAKE) updatenightly
