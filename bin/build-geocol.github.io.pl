@@ -73,8 +73,7 @@ $makefile_path->spew_utf8 (qq{
 all:
 deps:
 updatenightly:
-\t(git checkout -b builder origin/builder || (git fetch --depth 1 origin builder && git checkout -b origin/builder) || git checkout builder)
-\t\$(MAKE) updatenightly
+\tgit checkout origin/builder && make updatenightly
 });
 
 my $remote_url = 'git@github.com:geocol/geocol.github.io';
