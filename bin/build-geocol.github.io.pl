@@ -73,7 +73,7 @@ $makefile_path->spew_utf8 (qq{
 all:
 deps:
 updatenightly:
-\t(git checkout origin/builder || (git fetch --depth 1 origin && git checkout origin/builder)) && make updatenightly
+\tgit clone git://github.com/geocol/geocol.github.io && cd geocol.github.io && git checkout origin/builder && make updatenightly
 });
 
 my $remote_url = 'git@github.com:geocol/geocol.github.io';
