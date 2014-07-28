@@ -43,6 +43,7 @@ sub sync_repo ($$) {
 } # sync_repo
 
 $dest_path->remove_tree ({safe => 0});
+sync_repo 'geocol', 'data-countries';
 sync_repo 'geocol', 'data-jp-areas';
 sync_repo 'geocol', 'data-jp-transport';
 
