@@ -31,7 +31,7 @@ sub sync_repo ($$) {
             my $doc_path = $repo_path->child ('doc', $doc_name);
             my $doc_url;
             if ($doc_path->is_file) {
-                $doc_url = q<https://github.com/geocol/data-jp-areas/blob/master/> . $doc_path->relative ($repo_path);
+                $doc_url = qq<https://github.com/$user/$repo/blob/master/> . $doc_path->relative ($repo_path);
             }
 
             push @file, {repo_url => $repo_url,
