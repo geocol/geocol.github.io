@@ -2,8 +2,9 @@ use strict;
 use warnings;
 use Path::Tiny;
 
-my $repos_path = path (__FILE__)->parent->parent->child ('local/repos');
-my $dest_path = path (__FILE__)->parent->parent->child ('local/dest/geocol.github.io');
+my $RootPath = path (__FILE__)->parent->parent->absolute;
+my $repos_path = $RootPath->child ('local/repos');
+my $dest_path = $RootPath->child ('local/dest/geocol.github.io');
 my $data_path = $dest_path->child ('data');
 
 my @file;
@@ -86,6 +87,7 @@ my $remote_branch = 'master';
 (system "cd \Q$dest_path\E &&
          git init &&
          git add data index.html Makefile &&
+         cp -R \Q$RootPath\E/.github ./ &&
          git commit -m Generated &&
          git remote add origin \Q$remote_url\E &&
          git push origin +\Q$remote_branch\E") == 0 or die $?;

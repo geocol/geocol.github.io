@@ -5,6 +5,11 @@ CURL = curl
 GIT = git
 
 updatenightly: deps build
+#	$(CURL) -s -S -L -f https://gist.githubusercontent.com/wakaba/34a71d3137a52abb562d/raw/gistfile1.txt | sh
+#	$(GIT) add modules t_deps/modules
+#	perl local/bin/pmbp.pl --update
+#	$(GIT) add config
+	$(CURL) -sSLf https://raw.githubusercontent.com/wakaba/ciconfig/master/ciconfig | RUN_GIT=1 REMOVE_UNUSED=1 perl
 
 ## ------ Setup ------
 
