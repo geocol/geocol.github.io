@@ -11,7 +11,7 @@ my @file;
 sub sync_repo ($$) {
     my ($user, $repo) = @_;
 
-    my $repo_url = 'git://github.com/' . $user . '/' . $repo;
+    my $repo_url = 'https://github.com/' . $user . '/' . $repo;
     my $repo_path = $repos_path->child ($repo);
     (system 'git', 'clone', '--depth=1', $repo_url, $repo_path) == 0 or
         (system "cd \Q$repo_path\E && git add . && git reset --hard && git pull") == 0 or die $?;
@@ -67,6 +67,9 @@ $index_path->spew_utf8 (qq{
   <ul>
     @item
   </ul>
+
+  <sw-ads normal></sw-ads>
+  <script src="https://manakai.github.io/js/global.js" async></script>
 });
 
 my $makefile_path = $dest_path->child ('Makefile');
@@ -74,7 +77,7 @@ $makefile_path->spew_utf8 (qq{
 all:
 deps:
 updatenightly:
-\tgit clone git://github.com/geocol/geocol.github.io && cd geocol.github.io && git checkout origin/builder && make updatenightly
+\tgit clone https://github.com/geocol/geocol.github.io && cd geocol.github.io && git checkout origin/builder && make updatenightly
 });
 
 my $remote_url = 'git@github.com:geocol/geocol.github.io';
