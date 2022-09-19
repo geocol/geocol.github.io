@@ -81,7 +81,7 @@ updatenightly:
 \tgit clone https://github.com/geocol/geocol.github.io && cd geocol.github.io && git checkout origin/builder && make updatenightly
 });
 
-my $remote_url = 'git@github.com:geocol/geocol.github.io';
+my $remote_url = 'https://github.com/geocol/geocol.github.io';
 my $remote_branch = 'master';
 
 (system "cd \Q$dest_path\E &&
@@ -89,9 +89,9 @@ my $remote_branch = 'master';
          git add data index.html Makefile &&
          cp -R \Q$RootPath\E/.github ./ &&
          git commit -m Generated &&
+         git remote add origin \Q$remote_url\E &&
          git push origin +\Q$remote_branch\E") == 0 or die $?;
 
-#         git remote add origin \Q$remote_url\E &&
 #         git checkout --orphan \Q$remote_branch\E &&
 #         git commit -m Generated &&
 
