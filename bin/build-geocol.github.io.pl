@@ -89,9 +89,9 @@ my $remote_branch = 'master';
          git add data index.html Makefile &&
          cp -R \Q$RootPath\E/.github ./ &&
          git commit -m Generated &&
-         git remote add origin \Q$remote_url\E &&
          git push origin +\Q$remote_branch\E") == 0 or die $?;
 
+#         git remote add origin \Q$remote_url\E &&
 #         git checkout --orphan \Q$remote_branch\E &&
 #         git commit -m Generated &&
 
