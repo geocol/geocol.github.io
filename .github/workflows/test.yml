@@ -2,6 +2,9 @@
    "jobs" : {
       "deploy_github_nightly" : {
          "if" : "${{ github.ref == 'refs/heads/nightly' }}",
+         "needs" : [
+            "test"
+         ],
          "permissions" : {
             "contents" : "write"
          },
@@ -23,6 +26,9 @@
       },
       "deploy_github_staging" : {
          "if" : "${{ github.ref == 'refs/heads/staging' }}",
+         "needs" : [
+            "test"
+         ],
          "permissions" : {
             "contents" : "write"
          },
@@ -39,6 +45,32 @@
                   "BWALLER_URL" : "${{ secrets.BWALLER_URL }}"
                },
                "run" : "curl -sSf $BWALLER_URL | BWALL_GROUP=merger.${GITHUB_REF/refs\u005C/heads\u005C//} BWALL_NAME=${GITHUB_REPOSITORY} bash"
+            }
+         ]
+      },
+      "test" : {
+         "env" : {
+            "CIRCLE_ARTIFACTS" : "/tmp/circle-artifacts/test"
+         },
+         "runs-on" : "ubuntu-latest",
+         "steps" : [
+            {
+               "uses" : "actions/checkout@v2"
+            },
+            {
+               "run" : "mkdir -p $CIRCLE_ARTIFACTS"
+            },
+            {
+               "run" : "git config --global url.\u0022https://_:${{ secrets.GITHUB_TOKEN }}@github.com/geocol/geocol.github.io\u0022.insteadOf https://github.com/geocol/geocol.github.io"
+            },
+            {
+               "run" : "true"
+            },
+            {
+               "uses" : "actions/upload-artifact@v3",
+               "with" : {
+                  "path" : "/tmp/circle-artifacts/test"
+               }
             }
          ]
       }

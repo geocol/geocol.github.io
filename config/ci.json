@@ -1,5 +1,9 @@
 {
   "github": {
+    "build": [
+      "git config --global url.\"https://_:${{ secrets.GITHUB_TOKEN }}@github.com/geocol/geocol.github.io\".insteadOf https://github.com/geocol/geocol.github.io"
+    ],
+    "tests": ["true"],
     "gaa": true,
     "merger": true
   }
