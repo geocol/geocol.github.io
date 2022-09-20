@@ -1,10 +1,11 @@
 {
   "github": {
-    "build": [
-      "git config --global url.\"https://_:${{ secrets.GITHUB_TOKEN }}@github.com/geocol/geocol.github.io\".insteadOf https://github.com/geocol/geocol.github.io"
-    ],
-    "tests": ["true"],
-    "gaa": true,
+    "gaa": {
+      "build": [
+        "git config --global init.defaultBranch master",
+        "git config --global url.\"https://_:${{ secrets.GITHUB_TOKEN }}@github.com/geocol/geocol.github.io\".insteadOf https://github.com/geocol/geocol.github.io"
+      ]
+    },
     "merger": true
   }
 }

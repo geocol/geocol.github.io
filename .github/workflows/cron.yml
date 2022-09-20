@@ -17,7 +17,10 @@
                "run" : "git config --global user.name \u0022GitHub Actions\u0022"
             },
             {
-               "run" : "make deps"
+               "run" : "git config --global init.defaultBranch master"
+            },
+            {
+               "run" : "git config --global url.\u0022https://_:${{ secrets.GITHUB_TOKEN }}@github.com/geocol/geocol.github.io\u0022.insteadOf https://github.com/geocol/geocol.github.io"
             },
             {
                "run" : "make updatenightly"
@@ -35,7 +38,7 @@
    "on" : {
       "schedule" : [
          {
-            "cron" : "46 16 * * *"
+            "cron" : "28 17 * * *"
          }
       ]
    }
